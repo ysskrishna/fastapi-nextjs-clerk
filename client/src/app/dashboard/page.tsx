@@ -9,7 +9,7 @@ export default function DashboardPage() {
         </div>
       </SignedIn>
       <SignedOut>
-        <RedirectToSignIn />
+        <RedirectToSignIn redirectUrl="/signin" />
       </SignedOut>
     </>
   );
