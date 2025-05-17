@@ -22,9 +22,5 @@ app.include_router(dashboard_router, prefix="/api/dashboard")
 async def root():
     return {"message": "Welcome to FastAPI"}
 
-@app.get("/health")
-async def health():
-    return {"status": "ok"}
-
 if __name__ == "__main__":
     uvicorn.run("main:app", host="0.0.0.0", port=8081) 
