@@ -1,16 +1,12 @@
 from fastapi import APIRouter, Depends
-from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
-from core.clerk import validate_clerk_token
+from core.clerk import get_clerk_payload
 
 router = APIRouter()
-
-security = HTTPBearer()
 
 @router.get("/public")
 async def public():
     return {"message": "This is a public endpoint!"}
 
 @router.get("/private")
-async def private(credentials: HTTPAuthorizationCredentials = Depends(security)):
-    payload = validate_clerk_token(credentials.credentials)
-    return {"message": "This is a private endpoint!", "user": payload}
+async def private(clerk_payload=Depends(get_clerk_payload)):
+    return {"message": "This is a private endpoint!", "clerk_payload": clerk_payload}

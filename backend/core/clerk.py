@@ -1,6 +1,7 @@
 import jwt
 from jwt import PyJWKClient
-from fastapi import HTTPException, status
+from fastapi import HTTPException, status, Depends
+from fastapi.security import HTTPBearer, HTTPAuthorizationCredentials
 from core.config import Config
 
 def validate_clerk_token(token: str, audience: str = None):
@@ -20,3 +21,6 @@ def validate_clerk_token(token: str, audience: str = None):
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail=f"Invalid authentication credentials: {str(e)}",
         )
+
+def get_clerk_payload(credentials: HTTPAuthorizationCredentials = Depends(HTTPBearer())):
+    return validate_clerk_token(credentials.credentials)
