@@ -35,33 +35,31 @@ export default function DashboardPage() {
   return (
     <>
       <SignedIn>
+        <div>
         <Header />
-        <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 p-4 sm:p-8 space-y-10">
-          <div className="text-center w-full max-w-4xl">
-            <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-              FastAPI + NextJS + Clerk Integration
-            </h1>
+        <div className="flex  flex-col items-center justify-start bg-gray-50 p-4 sm:p-8 space-y-10">
+          <div className="text-center w-full max-w-6xl">
             {jwtToken ? (
               <>
-                <p className="text-md text-gray-600 dark:text-gray-400 mb-2">
+                <p className="text-md text-gray-600 mb-2">
                   Your current JWT (Session Token from Clerk):
                 </p>
-                <p className="font-mono break-all text-xs bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 p-3 rounded-md shadow-sm border border-gray-200 dark:border-gray-700">
+                <p className="font-mono break-all text-xs bg-gray-100  text-gray-700 dark:text-gray-300 p-3 rounded-md shadow-sm border border-gray-200 ">
                   {jwtToken}
                 </p>
               </>
             ) : (
-              <p className="text-md text-gray-600 dark:text-gray-400 p-3 bg-yellow-50 dark:bg-yellow-900/50 border border-yellow-300 dark:border-yellow-700 rounded-md">
+              <p className="text-md text-gray-600  p-3 bg-yellow-50  border border-yellow-300  rounded-md">
                 Loading JWT token...
               </p>
             )}
           </div>
 
           {/* Showcase Sections Grid */}
-          <div className="w-full max-w-5xl grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="w-full max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Showcase 1: Public Endpoint */}
             <ShowcaseCard title="1. Public Endpoint Access">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm text-gray-600  mb-3">
                 Calls an endpoint that requires no authentication.
               </p>
               <ActionButton onClick={publicApi.trigger} isLoading={publicApi.isLoading}>
@@ -72,7 +70,7 @@ export default function DashboardPage() {
 
             {/* Showcase 2: Private Endpoint (Success) */}
             <ShowcaseCard title="2. Private Endpoint Access (with JWT)">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm text-gray-600  mb-3">
                 Calls a protected endpoint, sending the JWT in the Authorization header.
               </p>
               <ActionButton onClick={privateApi.trigger} isLoading={privateApi.isLoading} disabled={!jwtToken}>
@@ -83,7 +81,7 @@ export default function DashboardPage() {
 
             {/* Showcase 3: Personalized Content */}
             <ShowcaseCard title="3. Personalized Content (using JWT)">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm text-gray-600  mb-3">
                 Backend uses JWT claims to return personalized data.
               </p>
               <ActionButton onClick={greetApi.trigger} isLoading={greetApi.isLoading} disabled={!jwtToken}>
@@ -94,13 +92,13 @@ export default function DashboardPage() {
 
             {/* Showcase 4: Private Access Without JWT */}
             <ShowcaseCard title="4. Private Access Attempt (NO JWT)">
-              <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
+              <p className="text-sm text-gray-600  mb-3">
                 Attempts to call a protected endpoint without sending the JWT. Expect an error.
               </p>
               <ActionButton
                 onClick={noTokenApi.trigger}
                 isLoading={noTokenApi.isLoading}
-                className="bg-red-600 hover:bg-red-700 focus:ring-red-500 dark:bg-red-700 dark:hover:bg-red-800"
+                className="bg-red-600 hover:bg-red-700 focus:ring-red-500  dark:hover:bg-red-800"
               >
                 Call <code className="text-xs">/private</code> (No Token)
               </ActionButton>
@@ -109,7 +107,7 @@ export default function DashboardPage() {
           </div>
         </div>
         <Footer />
-
+        </div>
       </SignedIn>
       <SignedOut>
         <RedirectToSignIn redirectUrl="/signin" />
