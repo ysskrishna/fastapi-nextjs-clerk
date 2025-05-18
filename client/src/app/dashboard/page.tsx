@@ -7,6 +7,7 @@ import ActionButton from "@/components/dashboard/ActionButton";
 import ApiResponseDisplay, { ApiResponse } from "@/components/dashboard/ApiResponseDisplay";
 import { useApiCall } from "@/hooks/useApiCall";
 
+
 // Helper function to make API calls
 async function fetchApi(endpoint: string, token?: string | null): Promise<ApiResponse> {
   const headers: HeadersInit = { 'Content-Type': 'application/json' };
@@ -14,7 +15,7 @@ async function fetchApi(endpoint: string, token?: string | null): Promise<ApiRes
     headers['Authorization'] = `Bearer ${token}`;
   }
   try {
-    const res = await fetch(`/api${endpoint}`, { headers });
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/dashboard${endpoint}`, { headers });
     const data = await res.json();
     if (!res.ok) {
       return { error: data, status: res.status || 500 };
@@ -53,7 +54,7 @@ export default function DashboardPage() {
         <div className="flex min-h-screen flex-col items-center justify-start bg-gray-50 dark:bg-gray-900 p-4 sm:p-8 space-y-10">
           <div className="text-center w-full max-w-4xl">
             <h1 className="text-3xl sm:text-4xl font-bold mb-6 text-gray-800 dark:text-gray-100">
-              JWT Authentication Showcase
+              FastAPI + NextJS + Clerk Integration
             </h1>
             {jwtToken ? (
               <>
@@ -95,20 +96,8 @@ export default function DashboardPage() {
               <ApiResponseDisplay response={privateApi.response} />
             </ShowcaseCard>
 
-            {/* Showcase 3: Backend-Verified JWT Payload */}
-            {privateApi.response && !privateApi.response.error && privateApi.response.clerk_payload && (
-              <ShowcaseCard title="3. Backend-Verified JWT Payload" className="md:col-span-2">
-                <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
-                  Displays the decoded JWT payload as verified and returned by the backend from the <code className="text-xs">/private</code> call.
-                </p>
-                <pre className="bg-gray-100 dark:bg-gray-800 p-3 rounded-md text-xs text-gray-700 dark:text-gray-300 overflow-x-auto border border-gray-200 dark:border-gray-700 shadow-sm">
-                  {JSON.stringify(privateApi.response.clerk_payload, null, 2)}
-                </pre>
-              </ShowcaseCard>
-            )}
-
-            {/* Showcase 4: Personalized Content */}
-            <ShowcaseCard title="4. Personalized Content (using JWT)">
+            {/* Showcase 3: Personalized Content */}
+            <ShowcaseCard title="3. Personalized Content (using JWT)">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                 Backend uses JWT claims to return personalized data.
               </p>
@@ -118,8 +107,8 @@ export default function DashboardPage() {
               <ApiResponseDisplay response={greetApi.response} />
             </ShowcaseCard>
 
-            {/* Showcase 5: Private Access Without JWT */}
-            <ShowcaseCard title="5. Private Access Attempt (NO JWT)">
+            {/* Showcase 4: Private Access Without JWT */}
+            <ShowcaseCard title="4. Private Access Attempt (NO JWT)">
               <p className="text-sm text-gray-600 dark:text-gray-400 mb-3">
                 Attempts to call a protected endpoint without sending the JWT. Expect an error.
               </p>
