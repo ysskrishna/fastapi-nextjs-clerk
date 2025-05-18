@@ -1,7 +1,30 @@
 {
   "name": "client",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
+  "author": {
+    "name": "ysskrishna",
+    "url": "https://github.com/ysskrishna"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ysskrishna/fastapi-nextjs-clerk"
+  },
+  "license": "MIT",
+  "keywords": [
+    "fastapi",
+    "nextjs",
+    "clerk",
+    "authentication",
+    "jwt",
+    "api",
+    "integration",
+    "backend",
+    "frontend",
+    "typescript",
+    "tailwindcss",
+    "yskrishna"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
