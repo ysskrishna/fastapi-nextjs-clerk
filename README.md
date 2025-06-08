@@ -111,6 +111,28 @@ This project demonstrates integration between a FastAPI backend and a Next.js fr
 - `docker-compose.yml` orchestrates both services for local development.
 - Other files include project-level documentation and configuration.
 
+
+## Prerequisites
+- Docker
+- Docker compose
+- Clerk account and project
+
+## Backend `.env` setup
+1. Create a `backend/.env` file in the project root using `backend/.env.sample` as reference.
+2. Get your project credentials:
+   - CLERK_JWKS_URL: Found in `Clerk Dashboard > API Keys > JWKS URL`
+   - CLERK_ISSUER: Found in `Clerk Dashboard > API Keys > Frontend API URL`
+3. Update these credentials to your `backend/.env` file   
+
+
+## Client `.env` setup
+1. Create a `client/.env` file in the project root using `client/.env.sample` as reference.
+2. Get your project credentials: 
+  - NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY: Found in `Clerk Dashboard > API Keys > Publishable Key`
+  - CLERK_SECRET_KEY: Found in `Clerk Dashboard > API Keys > Secret Key`
+
+3. Update these credentials to your `client/.env` file   
+
 ## Running the Project
 
 This project uses Docker Compose to orchestrate both the backend and frontend.
