@@ -5,10 +5,26 @@ import { Footer } from "@/components/footer"
 import "@/app/globals.css"
 import { Metadata } from "next"
 
-export const metadata: Metadata = {
-  title: "FastAPI + Next.js + Clerk Integration Demo",
+const siteConfig = {
+  name: "FastAPI + Next.js + Clerk Integration Demo",
   description:
     "A full-stack template demonstrating authentication with Clerk, JWT-secured API calls from Next.js to FastAPI, and a modern dashboard UI. Features user sign-in, protected endpoints, and personalized content.",
+  ogImage: "http://localhost:3000/og-image.png",
+  url: "http://localhost:3000",
+  twitterHandle: "@ysskrishna",
+  author: "ysskrishna",
+  authorUrl: "https://github.com/ysskrishna",
+  githubUrl: "https://github.com/ysskrishna",
+  linkedinUrl: "https://www.linkedin.com/in/ysskrishna/",
+  productHuntUrl: "https://www.producthunt.com/@ysskrishna"
+}
+
+export const metadata: Metadata = {
+  title: {
+    default: siteConfig.name,
+    template: `%s | ${siteConfig.name}`
+  },
+  description: siteConfig.description,
   keywords: [
     "fastapi",
     "nextjs",
@@ -22,28 +38,49 @@ export const metadata: Metadata = {
     "dashboard",
     "fullstack"
   ],
-  authors: [{ name: "ysskrishna", url: "https://github.com/ysskrishna" }],
-  creator: "ysskrishna",
-  openGraph: {
-    title: "FastAPI + Next.js + Clerk Integration Demo",
-    description:
-      "A template for building full-stack apps with Next.js frontend, Clerk authentication, and FastAPI backend secured by JWT.",
-    url: "https://github.com/ysskrishna/fastapi-nextjs-clerk",
-    siteName: "FastAPI Next.js Clerk Demo",
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "FastAPI Next.js Clerk Demo"
-      }
-    ],
-    locale: "en_US",
-    type: "website"
+  authors: [{
+    name: siteConfig.author,
+    url: siteConfig.authorUrl
+  }],
+  creator: siteConfig.author,
+  publisher: siteConfig.author,
+  metadataBase: new URL(siteConfig.url),
+  alternates: {
+    canonical: "/",
   },
-  metadataBase: new URL("http://localhost:3000"),
-};
-
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: siteConfig.url,
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    siteName: siteConfig.name,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: siteConfig.name,
+    description: siteConfig.description,
+    images: [siteConfig.ogImage],
+    creator: siteConfig.twitterHandle,
+  },
+  icons: {
+    icon: "/favicon.ico",
+  },
+  manifest: "/site.webmanifest",
+  robots: {
+    index: true,
+    follow: true,
+  },
+  other: {
+    linkedin: siteConfig.linkedinUrl,
+    github: siteConfig.githubUrl,
+    producthunt: siteConfig.productHuntUrl,
+    "application-name": siteConfig.name,
+    "msapplication-TileColor": "#ffffff",
+    "theme-color": "#ffffff",
+  },
+}
 
 export default function RootLayout({
   children,

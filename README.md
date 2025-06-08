@@ -2,6 +2,45 @@
 
 This project demonstrates integration between a FastAPI backend and a Next.js frontend, using Clerk for authentication. The frontend authenticates users with Clerk and sends Clerk-issued JWTs to the backend for protected API access.
 
+## Screenshots
+
+### SignUp Page
+<div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+  <div>
+    <h4>Light Theme</h4>
+    <img src="/media/signup.png" alt="SignUp Page Light Theme" width="400"/>
+  </div>
+  <div>
+    <h4>Dark Theme</h4>
+    <img src="/media/signup-dark.png" alt="SignUp Page Dark Theme" width="400"/>
+  </div>
+</div>
+
+### SignIn Page
+<div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+  <div>
+    <h4>Light Theme</h4>
+    <img src="/media/signin.png" alt="SignIn Page Light Theme" width="400"/>
+  </div>
+  <div>
+    <h4>Dark Theme</h4>
+    <img src="/media/signin-dark.png" alt="SignIn Page Dark Theme" width="400"/>
+  </div>
+</div>
+
+### Dashboard Page
+<div style="display: flex; gap: 1rem; margin-bottom: 1rem;">
+  <div>
+    <h4>Light Theme</h4>
+    <img src="/media/dashboard.png" alt="Dashboard Page Light Theme" width="400"/>
+  </div>
+  <div>
+    <h4>Dark Theme</h4>
+    <img src="/media/dashboard-dark.png" alt="Dashboard Page Dark Theme" width="400"/>
+  </div>
+</div>
+
+
 ## Features
 
 - User authentication with Clerk (sign in, sign up, JWT issuance)
@@ -14,6 +53,8 @@ This project demonstrates integration between a FastAPI backend and a Next.js fr
   - Error handling for unauthorized access
 - Responsive UI with Tailwind CSS
 - Docker Compose for easy orchestration
+- Light/Dark theme support with system preference detection
+- Automatic route protection and redirections
 
 ## Technology Stack
 - Next.js (React, TypeScript)
